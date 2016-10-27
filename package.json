@@ -18,6 +18,7 @@
   "homepage": "https://github.com/andrepatricio/ecommerce#readme",
   "dependencies": {
     "ejs": "^2.5.2",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "mysql": "^2.11.1"
   }
 }
