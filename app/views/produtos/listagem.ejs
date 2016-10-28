@@ -7,11 +7,17 @@
 			<th>
 				<td>id</td>
 				<td>nome</td>
-			</th>			
-			<tr>
-				<td>1</td>
-				<td>livro 1</td>
-			</tr>
+				<td>descricao</td>
+				<td>preco</td>
+			</th>
+			<%
+			for(var i = 0; i<=lista.length;i++){
+			%>
+				<tr>
+					<td><% lista[i].id %></td>
+					<td><% lista[i].nome %></td>
+				</tr>
+			<%}%>			
 		</table>
 	</body>
 </html>
