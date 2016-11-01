@@ -5,17 +5,14 @@
 	<body>
 		<table style="border: solid 1px">
 			<th>
-				<td>id</td>
 				<td>nome</td>
-				<td>descricao</td>
-				<td>preco</td>
 			</th>
 			<%
-			for(var i = 0; i<=lista.length;i++){
+			for(var i = 0; i<lista.length;i++){
+				console.log(lista[i].nome);
 			%>
 				<tr>
-					<td><% lista[i].id %></td>
-					<td><% lista[i].nome %></td>
+					<td><%= lista[i].nome %></td>
 				</tr>
 			<%}%>			
 		</table>
