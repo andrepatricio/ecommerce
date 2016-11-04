@@ -6,4 +6,15 @@ module.exports = function(app){
 			res.render('produtos/listagem', {lista: docs});
 		});
 	});
+
+	app.get('/produtos/novo', function(req, res){
+		res.render('produtos/criar');
+	});
+
+	app.post('/produtos/criar', function(req, res){
+		var produtoDAO = new app.DAO.ProdutosDAO();
+		produtoDAO.salvar(req.body, function(err, result){
+			res.redirect('/produtos');
+		});		
+	});
 };

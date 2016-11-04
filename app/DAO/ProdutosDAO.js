@@ -10,6 +10,12 @@ ProdutosDAO.prototype.listar = function(callback){
 	});
 };
 
+ProdutosDAO.prototype.salvar = function(produto, callback){
+	dbConnection.save(this._collectionName, produto, function(err, result){
+		callback(err, result);
+	});
+};
+
 module.exports = function(){
 	return ProdutosDAO;
 };

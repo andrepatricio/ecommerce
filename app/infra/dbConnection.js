@@ -14,6 +14,18 @@ var _find = function(collectionName, query, callback){
 	});
 };
 
+var _save = function(collectionName, obj, callback){
+	
+	MongoClient.connect(_url, function(err, db){
+		var collection = db.collection(collectionName);
+		collection.insertOne(obj, function(err, result){
+			callback(err, result);
+			db.close();
+		});
+	});
+};
+
 module.exports = {
-	find : _find
+	find : _find,
+	save : _save
 }
