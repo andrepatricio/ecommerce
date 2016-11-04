@@ -3,7 +3,15 @@ module.exports = function(app){
 		var produtosDAO = new app.DAO.ProdutosDAO(); 
 
 		produtosDAO.listar(function(err, docs){
-			res.render('produtos/listagem', {lista: docs});
+			res.format({
+				html : function(){
+					res.render('produtos/listagem', {lista: docs});
+				},
+				json : function(){
+					res.json(docs);
+				}
+			});
+			
 		});
 	});
 
