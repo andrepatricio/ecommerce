@@ -19,7 +19,7 @@ module.exports = function(app){
 		res.render('produtos/criar');
 	});
 
-	app.post('/produtos/criar', function(req, res){
+	app.post('/produtos', function(req, res){
 		var produtoDAO = new app.DAO.ProdutosDAO();
 		produtoDAO.salvar(req.body, function(err, result){
 			res.redirect('/produtos');
