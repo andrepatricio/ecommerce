@@ -20,6 +20,17 @@ module.exports = function(app){
 	});
 
 	app.post('/produtos/criar', function(req, res){
+
+		var validadorNome = req.assert('nome', 'Nome é obrigatorio');
+		validadorNome.notEmpty();
+
+		var erros = req.validationErrors();
+
+		if(erros){
+			res.render('produtos/criar');
+			return;
+		}
+
 		var produtoDAO = new app.DAO.ProdutosDAO();
 		produtoDAO.salvar(req.body, function(err, result){
 			res.redirect('/produtos');
