@@ -19,7 +19,7 @@ module.exports = function(app){
 		res.render('produtos/novo', {erros : {}, produto : {}});
 	});
 
-	app.post('/produtos', function(req, res){
+	app.post('/produtos', function(req, res, next){
 		var produto = req.body;
 		req.assert('nome', 'Nome é obrigatorio').notEmpty();
 		req.assert('preco', 'Valor invalido').notEmpty().isFloat();
@@ -39,6 +39,9 @@ module.exports = function(app){
 		}
 		var produtoDAO = new app.DAO.ProdutosDAO();
 		produtoDAO.salvar(produto, function(err, result){
+			if(err){
+				return next(err);
+			}
 			res.redirect('/produtos');
 		});		
 	});

@@ -1,7 +1,10 @@
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
 
-var _url = 'mongodb://localhost:27017/ecommerce';
+var _urlTeste = 'mongodb://localhost:27017/ecommerce_test';
+var _urlDesenv = 'mongodb://localhost:27017/ecommerce';
+
+var _url = process.env.NODE_ENV == 'test' ? _urlTeste : _urlDesenv;
 
 var _find = function(collectionName, query, callback){	
 	MongoClient.connect(_url, function(err, db){
