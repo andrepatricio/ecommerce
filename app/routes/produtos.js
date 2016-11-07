@@ -16,23 +16,30 @@ module.exports = function(app){
 	});
 
 	app.get('/produtos/novo', function(req, res){
-		res.render('produtos/criar');
+		res.render('produtos/novo', {erros : {}, produto : {}});
 	});
 
 	app.post('/produtos/criar', function(req, res){
-
-		var validadorNome = req.assert('nome', 'Nome é obrigatorio');
-		validadorNome.notEmpty();
+		var produto = req.body;
+		req.assert('nome', 'Nome é obrigatorio').notEmpty();
+		req.assert('preco', 'Valor invalido').notEmpty().isFloat();
 
 		var erros = req.validationErrors();
 
 		if(erros){
-			res.render('produtos/criar');
+			res.format({
+				html : function(){
+					res.render('produtos/novo', {erros : erros, produto : produto});
+				},
+				json : function(){
+					res.json({erros : erros, produto : produto});
+				}
+			});
 			return;
 		}
 
 		var produtoDAO = new app.DAO.ProdutosDAO();
-		produtoDAO.salvar(req.body, function(err, result){
+		produtoDAO.salvar(produto, function(err, result){
 			res.redirect('/produtos');
 		});		
 	});
