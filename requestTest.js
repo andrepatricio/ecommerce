@@ -5,8 +5,8 @@ var config = {
 	port: 3000,
 	path: '/produtos',
 	headers : {
-		//'Accept' : 'application/json'
-		Accept : 'text/html'
+		'Accept' : 'application/json'
+		//Accept : 'text/html'
 	}
 };
 
