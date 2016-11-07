@@ -3,6 +3,11 @@
 		<title>Criar produto</title>
 	</head>
 	<body>
+		<div class="erros">
+			<% for(var i; i < erros.legth; i++){ %>
+				<span><%= erro[i].param - erro[i].msg %></span>
+			<% } %>
+		</div>
 		<form action="/produtos" method="post">
 			<div>
 				<input type="text" id="nome" name="nome" placeholder="Nome" />
