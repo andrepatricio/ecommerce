@@ -29,10 +29,10 @@ module.exports = function(app){
 		if(erros){
 			res.format({
 				html : function(){
-					res.render('produtos/novo', {erros : erros, produto : produto});
+					res.status(400).render('produtos/novo', {erros : erros, produto : produto});
 				},
 				json : function(){
-					res.json({erros : erros, produto : produto});
+					res.status(400).json({erros : erros, produto : produto});
 				}
 			});
 			return;

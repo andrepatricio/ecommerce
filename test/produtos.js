@@ -7,4 +7,16 @@ describe('#Rota de produtos', function(){
 		.expect('Content-Type', /json/)
 		.expect(200, done);		
 	});
+
+	it('#cadastrar produto com dados invalidos', function(done){
+		request.post('/produtos')
+				.send({nome : '', preco : 15, descricao: "descricao"})
+				.expect(400, done);
+	});
+
+	it('#cadastrar produto com dados validos', function(done){
+		request.post('/produtos')
+				.send({nome : 'Livro novo', preco : 15, descricao: "descricao"})
+				.expect(302, done);
+	});
 });
