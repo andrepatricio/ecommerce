@@ -1,0 +1,15 @@
+<html>
+	<head>
+		<title>Home dos produtos</title>
+	</head>
+	<body>
+		<ul>
+			<%for (var i = 0; i < lista.length; i++){%>
+				<li>
+					<span>Nome: <%=lista[i].nome %></span>
+					<span>R$ <%=lista[i].preco %></span>
+				</li>
+			<% } %>
+		</ul>
+	</body>
+</html>
