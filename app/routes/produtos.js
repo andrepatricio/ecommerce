@@ -42,6 +42,8 @@ module.exports = function(app){
 			if(err){
 				return next(err);
 			}
+			console.log(result);
+			app.get('io').emit('novoProduto', result);
 			res.redirect('/produtos');
 		});		
 	});
